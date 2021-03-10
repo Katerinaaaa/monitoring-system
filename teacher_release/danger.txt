@@ -1,0 +1,11 @@
+Taskmgr.exe
+WUDFHost.exe
+VirtualBox.exe
+Solitaire.exe
+Chess.exe
+FreeCell.exe
+Hearts.exe
+Mahjong.exe
+MineSweeper.exe
+PurblePlace.exe
+SpiderSolitaire.exe

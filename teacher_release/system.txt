@@ -1,0 +1,12 @@
+backgroundTaskHost.exe
+dllhost.exe
+explorer.exe
+RuntimeBroker.exe
+SearchFilterHost.exe
+SearchIndexer.exe
+SearchProtocolHost.exe
+services.exe
+svchost.exe
+WerFault.exe
+wermgr.exe
+WPDShextAutoplay.exe
