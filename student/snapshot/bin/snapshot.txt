@@ -1,0 +1,60 @@
+PID: 7428 TITLE: Пуск
+PID: 7428 TITLE: Работающие приложения
+PID: 7428 TITLE: Работающие приложения
+PID: 7428 TITLE: Системная область уведомлений
+PID: 7428 TITLE: Пользовательская область уведомлений
+PID: 7428 TITLE: Индикатор ввода в области уведомлений
+PID: 7428 TITLE: Системные часы, 20:31, ‎10.‎03.‎2021
+PID: 7428 TITLE: Центр уведомлений, Нет новых уведомлений (Фокусировка внимания включена)
+PID: 8736 TITLE: Приложение преподавателя
+PID: 11328 TITLE: C:\Qt\Tools\QtCreator\bin\qtcreator_process_stub.exe
+PID: 6416 TITLE: pongcontroller.cpp @ Teacher_new - Qt Creator
+PID: 7800 TITLE: Microsoft Teams Идет вызов Головченко Екатерина Алексеевна
+PID: 7800 TITLE: Chrome Legacy Window
+PID: 7800 TITLE: Головченко Екатерина Алексеевна | Microsoft Teams
+PID: 7428 TITLE: Monitoring
+PID: 7428 TITLE: UIRibbonDockTop
+PID: 7428 TITLE: Ribbon
+PID: 7428 TITLE: Ribbon
+PID: 7428 TITLE: Кнопки навигации
+PID: 7428 TITLE: Верхняя панель инструментов
+PID: 7428 TITLE: Адрес: C:\Users\vikiz\Documents\Monitoring
+PID: 7428 TITLE: Панель инструментов адресной строки
+PID: 7428 TITLE: SearchEditBox
+PID: 7428 TITLE: Monitoring
+PID: 720 TITLE: Steps — Яндекс.Браузер
+PID: 7800 TITLE: Головченко Екатерина Алексеевна | Microsoft Teams
+PID: 6028 TITLE: Сравнения поточных шифров.docx - Microsoft Word
+PID: 6028 TITLE: MsoDockTop
+PID: 6028 TITLE: Ribbon
+PID: 6028 TITLE: Ribbon
+PID: 6028 TITLE: MsoDockBottom
+PID: 6028 TITLE: Строка состояния
+PID: 6028 TITLE: Строка состояния
+PID: 6028 TITLE: Сравнения поточных шифров.docx
+PID: 6028 TITLE: MSO Generic Control Container
+PID: 6028 TITLE: MSO Generic Control Container
+PID: 6028 TITLE: Документ Microsoft Word
+PID: 6028 TITLE: По вертикали
+PID: 6028 TITLE: ЛР_1_Прохорова В.Е. 171-341.docx - Microsoft Word
+PID: 6028 TITLE: MsoDockTop
+PID: 6028 TITLE: Ribbon
+PID: 6028 TITLE: Ribbon
+PID: 6028 TITLE: MsoDockBottom
+PID: 6028 TITLE: Строка состояния
+PID: 6028 TITLE: Строка состояния
+PID: 6028 TITLE: ЛР_1_Прохорова В.Е. 171-341.docx
+PID: 6028 TITLE: MSO Generic Control Container
+PID: 6028 TITLE: MSO Generic Control Container
+PID: 6028 TITLE: Документ Microsoft Word
+PID: 6028 TITLE: По вертикали
+PID: 6028 TITLE: По горизонтали
+PID: 12540 TITLE: Методичка для Мосполитеха (1).pdf — Личный: Microsoft​ Edge
+PID: 8228 TITLE: Кино и ТВ
+PID: 10852 TITLE: Microsoft Store
+PID: 8228 TITLE: Microsoft Store
+PID: 9996 TITLE: Кино и ТВ
+PID: 10488 TITLE: Microsoft Text Input Application
+PID: 11848 TITLE: 2whois.ru - сервис TRACEROUTE: информация о домене "vk.com" - Google Chrome
+PID: 7428 TITLE: FolderView
+PID: 7428 TITLE: Program Manager
