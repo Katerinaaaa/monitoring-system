@@ -20,6 +20,30 @@ PongController::PongController(QObject *QMLObject) : viewer(QMLObject)
         file.close();
 }
 
+//функция входа в систему через пароль
+void PongController::passEnter(QString passwd)
+{
+    QByteArray my_pass = "827ccb0eea8a706c4c34a16891f84e7b";    // пароль лучше поменять
+
+    QByteArray pass;
+    pass += passwd;
+
+    QString result = QString(QCryptographicHash::hash((pass),QCryptographicHash::Md5).toHex());
+
+    if (my_pass == result){
+        emit passTrue(); // сигнал для Qml об успехе;)
+        number = 0;         // обнуляем счётчик
+    }
+    else {
+        number ++;
+        if (number < 3){
+            emit passFalse();   //сигнал для Qml о провале:(
+        }
+        else{
+            emit exitPass(); //сигнал для Qml что попытки закончились:(
+        }
+    }
+}
 
 void PongController::UdpChat() {
     qDebug() << "Listening...";

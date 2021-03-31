@@ -30,6 +30,8 @@ public:
 
 
 public slots:
+    // Сравниваем пароль для входа в систему
+    void passEnter(QString passwd);
     // Соединение для получения данных
     void UdpChat();
     // Смотрим историю по каждому студенту
@@ -64,6 +66,12 @@ private slots:
     void readSnap(QString str);
 
 signals:
+    // сигналы об успешном/нет вводе пароля
+    void passTrue();
+    void passFalse();
+    // говорим, о том, что попытки закончились и закрываем приложение
+    void exitPass();
+
     // выводим на экран ip-преподавателя
     void ipQml(QString ipAddress);
     // выводим на экран ip-студента в истории логов

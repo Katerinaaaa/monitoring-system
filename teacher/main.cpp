@@ -31,6 +31,9 @@ int main(int argc, char *argv[])
     pong.myAddress();   //адрес будем выводить при открытии приложения
     pong.UdpChat();     //принимаем данные от студента
 
+    QObject::connect(engine.rootObjects().first(), SIGNAL(passEnter(QString)),
+            &pong, SLOT(passEnter(QString)));   //вводим пароль для входа в систему
+
     QObject::connect(engine.rootObjects().first(), SIGNAL(historyIp(QString)),
             &pong, SLOT(historyIp(QString)));   //смотрим историю событий по каждому студенту
 

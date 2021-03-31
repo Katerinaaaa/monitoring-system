@@ -7,6 +7,7 @@
         <file>Page2.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>Snapshot.qml</file>
+        <file>Password.qml</file>
     </qresource>
     <qresource prefix="/image">
         <file>image/black.jpg</file>

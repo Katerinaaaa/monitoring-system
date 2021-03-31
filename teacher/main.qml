@@ -23,6 +23,7 @@ ApplicationWindow {
     signal clearPolitic(string filename)
     signal sendPolitic(string filename, string addr)
 
+
     SwipeView {
         id: swipeView
         font.bold: true
@@ -31,7 +32,7 @@ ApplicationWindow {
 
         Page1{
             id: page1
-            visible: true //false
+            visible: false
         }
 
         Page2{
@@ -65,6 +66,11 @@ ApplicationWindow {
      // страничка с информацией, введённой с клавиатуры студентом
      Keylogger{
          id: keyWindow
+     }
+
+     // окно для ввода пароля преподавателя
+     Password{
+         id: passWindow
      }
 }
 
