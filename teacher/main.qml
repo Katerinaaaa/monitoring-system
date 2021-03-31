@@ -9,6 +9,28 @@ ApplicationWindow {
     width: 960
     height: 650
     title: qsTr("Приложение преподавателя")
+	
+	Connections {
+        target: window
+        onClosing: {
+            close.accepted = false
+            messageDialog.visible = true
+        }
+    }
+
+    // уведомление перед закрытием приложения преподавателя
+    MessageDialog {
+        id: messageDialog
+        visible: false
+        icon: StandardIcon.Warning
+        title: "Внимание!"
+        text: "Вы уверены, что хотите закрыть приложение?\nВсе полученные Вами данные можно будет найти ТОЛЬКО в архиве"
+        standardButtons: StandardButton.Ok | StandardButton.Cancel
+        onAccepted: {
+            close.accepted = true
+            Qt.quit()
+        }
+    }
 
     signal myAddress()
 
