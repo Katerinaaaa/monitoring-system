@@ -5,91 +5,217 @@
 #include <QDebug>
 
 #include "studentsmodel.h"
-
 #include "historsmodel.h"
 
+/**
+ * @brief The PongController class Класс для обмена информацией между пользователем и студентами
+ */
 class PongController : public QObject
 {
     Q_OBJECT
 
 public:
+    /**
+     * @brief PongController
+     * @param parent
+     */
     explicit PongController(QObject *parent = nullptr);
 
+    /**
+     * @brief s_model
+     */
     StudentsModel * s_model;
 
+    /**
+     * @brief hist_model
+     */
     HistorsModel * hist_model;
 
-    int ident = 0; // для идентификаторов компьютеров
+    /**
+     * @brief ident для идентификаторов компьютеров
+     */
+    int ident = 0;
 
-    int number = 0; // счётчик для количества попыток ввода пароля
+    /**
+     * @brief number счётчик для количества попыток ввода пароля
+     */
+    int number = 0;
 
-    // Для работы по UDP-протоколу в локальной сети
+    /**
+     * @brief socket Для работы по UDP-протоколу в локальной сети
+     */
     QUdpSocket* socket;
 
+    /**
+     * @brief myAddress Получение текущего IP-адреса преподавателя
+     * @return IP-адрес пользователя
+     */
     QString myAddress();
 
 
 public slots:
-    // Сравниваем пароль для входа в систему
+
+    /**
+     * @brief passEnter Сравниваем пароль для входа в систему
+     * @param passwd Пароль пользователя
+     */
     void passEnter(QString passwd);
-    // Соединение для получения данных
+
+    /**
+     * @brief UdpChat Соединение для получения данных
+     */
     void UdpChat();
-    // Смотрим историю по каждому студенту
+
+    /**
+     * @brief historyIp Смотрим историю по каждому студенту
+     * @param addr IP-адрес студента
+     */
     void historyIp(QString addr);
 
-    // Запрашиваем информацию об открытых окнах
+
+    /**
+     * @brief wantSnap Запрашиваем информацию об открытых окнах
+     * @param addr IP-адрес студента
+     */
     void wantSnap(QString addr);
-    // Запрашиваем информацию о введённых символах
+
+    /**
+     * @brief wantKeylog Запрашиваем информацию о введённых символах
+     * @param addr IP-адрес студента
+     */
     void wantKeylog(QString addr);
 
     // Дальше всё про создание политик
-    // Добавляем url в одну из политик
+
+    /**
+     * @brief addUrl Добавляем url в одну из политик
+     * @param url Адрес сайта
+     * @param filename Название файла политики
+     */
     void addUrl(QString url, QString filename);
-    // Отображаем политику в окне QML
+
+    /**
+     * @brief showPolitic Отображаем политику в окне QML
+     * @param filename Название файла политики
+     */
     void showPolitic(QString filename);
-    // Очищаем файл с определённой политикой
+
+    /**
+     * @brief clearPolitic Очищаем файл с определённой политикой
+     * @param filename Название файла политики
+     */
     void clearPolitic(QString filename);
-    //отправляем политику студентам
+
+    /**
+     * @brief sendPolitic Отправляем политику студентам
+     * @param filename Название файла политики
+     * @param ip IP-адрес студента
+     */
     void sendPolitic(QString filename, QString ip);
 
 private slots:
-    // Сохраняем информацию о компьютерах в сети за день
+
+    /**
+     * @brief saveToLogFile Сохраняем информацию о компьютерах в сети за день
+     * @param str Новая строка с логами
+     */
     void saveToLogFile(QString str);
-    // Формируем сигналы для отправки студенту
+
+    /**
+     * @brief strPolitic Формируем сигналы для отправки студенту
+     * @param politic Содержимое файла с политиками
+     * @param ip IP-адрес студента
+     */
     void strPolitic(QString politic, QString ip);
+
+    /**
+     * @brief strData Отправка сообщений студенту
+     * @param message Содержимое сообщения
+     * @param ip IP-адрес студента
+     */
     void strData(QString message, QString ip);
-    // Получаем сообщения и по их статусу идём в нужную функцию
+
+    /**
+     * @brief read Получаем сообщения и по их статусу идём в нужную функцию
+     */
     void read();
-    // Считываем нажатие клавиш студента
+
+    /**
+     * @brief readKeylog Считываем нажатие клавиш студента
+     * @param str Передаваемый текст
+     */
     void readKeylog(QString str);
-    // Считываем информацию об открытых окнах
+
+    /**
+     * @brief readSnap Считываем информацию об открытых окнах
+     * @param str Передаваемый список с открытыми окнами
+     */
     void readSnap(QString str);
 
 signals:
-    // сигналы об успешном/нет вводе пароля
+
+    /**
+     * @brief passTrue Сигнал об успешном вводе пароля
+     */
     void passTrue();
+
+    /**
+     * @brief passFalse Сигнал о неудачном вводе пароля
+     */
     void passFalse();
-    // говорим, о том, что попытки закончились и закрываем приложение
+
+    /**
+     * @brief exitPass Сообщаем о том, что попытки закончились и закрываем приложение
+     */
     void exitPass();
 
-    // выводим на экран ip-преподавателя
+    /**
+     * @brief ipQml Выводим на экран ip-преподавателя
+     * @param ipAddress IP-адрес пользователя
+     */
     void ipQml(QString ipAddress);
-    // выводим на экран ip-студента в истории логов
+
+    /**
+     * @brief ipStud Выводим на экран ip-студента в истории логов
+     * @param ipStudents IP-адрес студента
+     */
     void ipStud(QString ipStudents);
-    // меняем цвет карточки компьютера
+
+    /**
+     * @brief changeDelegate Изменение цвета карточки компьютера
+     * @param num_qml Номер карточки на главном экране
+     * @param status Текущий статус (цвет) карточки
+     */
     void changeDelegate(int num_qml, QString status);
-    // смотрим историю логов по каждому компьютеру
+
+    /**
+     * @brief showHistory Смотрим историю логов по каждому компьютеру
+     */
     void showHistory();
 
-    // смотрим открытые окна определённого студента
+    /**
+     * @brief showSnap Смотрим открытые окна определённого студента
+     * @param snapshot Список открытых окон студента
+     */
     void showSnap(QString snapshot);
-    // смотрим введённые символы определённого студента
+
+    /**
+     * @brief showKeylog Смотрим введённые символы определённого студента
+     * @param keylog Текст, введённый с клавиатуры студентом
+     */
     void showKeylog(QString keylog);
-    //будет отображать содержимое файла при его изменении
+
+    /**
+     * @brief qmlPolitic Отображение содержимого файла при его изменении
+     * @param textfile Содержимое файла
+     */
     void qmlPolitic(QString textfile);
 
 protected:
-    QObject *viewer;  // связь функций C++ с qml-страничками
+    /**
+     * @brief viewer Связь функций C++ с qml-страничками
+     */
+    QObject *viewer;
 
 };
 

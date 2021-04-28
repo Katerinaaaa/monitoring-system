@@ -9,8 +9,7 @@ ApplicationWindow {
     width: 960
     height: 650
     title: qsTr("Приложение преподавателя")
-	
-	Connections {
+    Connections {
         target: window
         onClosing: {
             close.accepted = false

@@ -22,6 +22,8 @@ Rectangle{
         opacity: 0.9 //немножко прозрачный
     }
 
+    //Pause{} // кнопка паузы
+
     ColumnLayout{
         anchors.fill: parent
         spacing: 10

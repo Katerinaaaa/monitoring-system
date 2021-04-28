@@ -20,6 +20,7 @@ PongController::PongController(QObject *QMLObject) : viewer(QMLObject)
         file.close();
 }
 
+
 //функция входа в систему через пароль
 void PongController::passEnter(QString passwd)
 {
@@ -45,7 +46,9 @@ void PongController::passEnter(QString passwd)
     }
 }
 
+
 void PongController::UdpChat() {
+
     qDebug() << "Listening...";
     socket = nullptr;
 
@@ -96,6 +99,7 @@ void PongController::strPolitic(QString politic, QString ip) {
     qDebug() << "Файл отправлен";
 }
 
+
 void PongController::strData(QString message, QString ip) {
     QByteArray data; // Массив данных для отправки
 
@@ -112,6 +116,7 @@ void PongController::strData(QString message, QString ip) {
     qDebug() << "Выбрали: " << ip;
     qDebug() << "Отправляем студенту: " << message;
 }
+
 
 void PongController::read() {
     while (socket->hasPendingDatagrams()) {
@@ -325,6 +330,7 @@ void PongController::read() {
     }
 }
 
+
 void PongController::readSnap(QString str){
 
     QFile file("snapshot.txt");
@@ -349,6 +355,7 @@ void PongController::readSnap(QString str){
 
     qDebug() << "Получил Снап";
 }
+
 
 void PongController::readKeylog(QString str){
     int x = 0;
@@ -407,6 +414,7 @@ void PongController::wantKeylog(QString addr){
     emit showKeylog(keylog);
 }
 
+
 void PongController::saveToLogFile(QString str) {
     QDate now = QDate::currentDate();
     QString dateStr = now.toString("dd-MM-yyyy");
@@ -435,6 +443,7 @@ void PongController::saveToLogFile(QString str) {
     file.close();
 }
 
+
 QString PongController::myAddress() {
 
     QString ipAddress;
@@ -451,8 +460,8 @@ QString PongController::myAddress() {
     return ipAddress;
 }
 
-void PongController::historyIp(QString addr){
 
+void PongController::historyIp(QString addr){
     QDate now = QDate::currentDate();
     QString dateStr = now.toString("dd-MM-yyyy");
 
@@ -528,6 +537,7 @@ void PongController::addUrl(QString url, QString filename){
     showPolitic(filename);
 }
 
+
 void PongController::showPolitic(QString filename){
 
     QFile file(filename);
@@ -540,6 +550,7 @@ void PongController::showPolitic(QString filename){
     //обновляем данные в окне QML
     emit qmlPolitic(textfile);
 }
+
 
 void PongController::clearPolitic(QString filename){
 

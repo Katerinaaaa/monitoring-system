@@ -18,6 +18,7 @@ Page{
         fillMode: Image.PreserveAspectCrop  //подгоняет картиночку красиво, по центру
     }
 
+    //Pause{} // кнопка паузы
 
     ColumnLayout{
         anchors.fill: parent

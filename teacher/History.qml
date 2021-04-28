@@ -24,6 +24,8 @@ Rectangle{
         opacity: 0.9 //немножко прозрачный
     }
 
+    //Pause{} // кнопка паузы
+
     ColumnLayout{
         anchors.fill: parent
         spacing: 10
@@ -56,6 +58,43 @@ Rectangle{
                 font.weight: Font.Bold
                 font.family: "Courier"
                 anchors.centerIn: parent
+            }
+        }
+
+        //переключатель между всей историей и опасными действиями
+        RowLayout {
+            Layout.alignment:  Qt.AlignHCenter
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            RadioButton {
+                id: all
+                text: qsTr("ВСЕ ДЕЙСТВИЯ")
+                font.pixelSize: 14
+                font.family: "Courier"
+                font.weight: Font.Bold
+                checked: true
+                onCheckedChanged: {
+                    if (all.checked == true){  //если выключатель на кнопке "Все действия"
+                        listView.visible = true;
+                        listView2.visible = false;
+                    }
+                }
+            }
+
+            RadioButton {
+                id: danger
+                text: qsTr("ОПАСНЫЕ ДЕЙСТВИЯ")
+                font.pixelSize: 14
+                font.family: "Courier"
+                font.weight: Font.Bold
+                checked: false
+                onCheckedChanged: {
+                    if (danger.checked == true){  //если выключатель на кнопке "Опасные действия"
+                        listView2.visible = true;
+                        listView.visible = false;
+                    }
+                }
             }
         }
 
@@ -164,6 +203,118 @@ Rectangle{
                         Layout.preferredHeight: 0.8 * parent.height
                         Layout.fillWidth: true
                         Layout.rightMargin: 20
+                    }
+                }
+            }
+        }
+
+        // выбираем только опасные действия
+        ListView{
+            id: listView2
+            Layout.alignment: Qt.AlignHCenter
+            Layout.fillHeight: true
+            Layout.preferredWidth: 0.85 * pagehist.width
+            Layout.bottomMargin: 30
+            visible: false
+            enabled: true
+            model: _modelHist //модель с историей логов студента
+
+            //карточка с фоном
+            delegate: Item{
+                id:item
+                width: parent.width
+                height: 100
+                Rectangle{
+                    width: parent.width
+                    height: 80
+                    radius: 5
+                    anchors.bottomMargin: 10
+                    visible: {
+                        if (status != "danger"){
+                            item.visible = false
+                            item.height = 0
+                        }
+                    }
+
+                    gradient: Gradient {
+                        GradientStop {
+                            color: "#9B9E94"
+                            position: 0.00;
+                        }
+                        GradientStop {
+                            position: 1.00;
+                            color: "#000000"
+                        }
+                    }
+
+                    GridLayout{
+                        anchors.fill: parent
+                        width: parent.width
+                        height: 80
+                        columns: 4
+                        rows: 2
+
+                        Image{  //Статус
+                            Layout.column: 0
+                            Layout.rowSpan: 2
+                            Layout.preferredHeight: 50
+                            Layout.preferredWidth: 50
+                            Layout.leftMargin: 10
+                            Layout.rightMargin: 10
+                            source: "qrc:/image/image/danger.png"
+                        }
+
+                        Label{  //время
+                            text: time
+                            Layout.column: 1
+                            Layout.row: 0
+                            color: "#ffffff"
+                            font.pointSize: 12
+                            font.family: "Courier"
+                            Layout.preferredHeight: 0.2 * parent.height
+                            Layout.preferredWidth: 0.2 * parent.width
+                            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                            Layout.rightMargin: 10
+                        }
+
+                        Label{  //дата
+                            text: date
+                            Layout.column: 1
+                            Layout.row: 1
+                            color: "#ffffff"
+                            font.pointSize: 12
+                            font.family: "Courier"
+                            Layout.preferredHeight: 0.3 * parent.height
+                            Layout.preferredWidth: 0.2 * parent.width
+                            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                            Layout.rightMargin: 10
+                        }
+
+                        Label{  //событие
+                            text: exe
+                            Layout.column: 2
+                            Layout.rowSpan: 2
+                            color: "#ffffff"
+                            font.pointSize: 12
+                            font.family: "Courier"
+                            wrapMode: Text.WrapAnywhere
+                            Layout.preferredHeight: 0.3 * parent.height
+                            Layout.preferredWidth: 0.2 * parent.width
+                            Layout.rightMargin: 10
+                        }
+
+                        Label{  //путь
+                            text: descrip
+                            Layout.column: 3
+                            Layout.rowSpan: 2
+                            color: "#ffffff"
+                            font.pointSize: 10
+                            font.family: "Courier"
+                            wrapMode: Text.WrapAnywhere
+                            Layout.preferredHeight: 0.8 * parent.height
+                            Layout.fillWidth: true
+                            Layout.rightMargin: 20
+                        }
                     }
                 }
             }
