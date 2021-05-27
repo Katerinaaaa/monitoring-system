@@ -14,6 +14,11 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    // запуск тестирования, т.к. у нас уже есть main!!!
+    QTest::qSleep(250);
+    QTest::qExec(new Test_File, argc, argv);
+    // конец!!!
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
